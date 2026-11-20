@@ -4,6 +4,10 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex,nofollow">
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#0b3a5a">
+<link rel="icon" href="icon-192.png">
+<link rel="apple-touch-icon" href="icon-192.png">
 <title>Capitán de Altura · Simulador</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
@@ -247,5 +251,6 @@ fetch('data.bin',{cache:'no-cache'}).then(r=>{if(!r.ok)throw 0;return r.arrayBuf
 }).catch(()=>{$('load').textContent='No se pudieron cargar las preguntas. Recarga la página.'});
 }
 </script>
+<script>if('serviceWorker' in navigator){navigator.serviceWorker.register('sw.js').catch(()=>{})}</script>
 </body>
 </html>
