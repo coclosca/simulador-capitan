@@ -108,7 +108,7 @@ details{margin-top:10px}summary{cursor:pointer;font-weight:600;padding:8px 0}
         <div class="row"><button class="link" id="all">Marcar todos</button><button class="link" id="none">Ninguno</button></div>
         <div class="chs" id="chs"></div>
       </details>
-      <div class="row" style="margin-top:8px"><button class="link" id="resume" hidden>Continuar el test empezado</button><button class="link" id="reset">Reiniciar preguntas usadas</button></div>
+      <div class="row" style="margin-top:8px"><button class="link" id="resume" hidden>Continuar el test empezado</button><button class="link" id="reset">Reiniciar preguntas usadas</button><button class="link" id="resetAll">Empezar todo desde cero</button></div>
     </div>
     <div class="card" id="histCard" hidden><h2>Últimos resultados</h2><ol class="hist" id="hist"></ol></div>
   </section>
@@ -216,6 +216,7 @@ $('finish').onclick=async()=>{const left=test.ids.length-Object.keys(test.ans).l
 $('quit').onclick=home;$('again').onclick=generate;$('go').onclick=generate;
 $('resume').onclick=()=>{render();show('quiz')};
 $('reset').onclick=async()=>{if(await ask('¿Marcar todas las preguntas como no usadas? El historial de resultados se mantiene.')){used.clear();LS.set('used',[]);home()}};
+$('resetAll').onclick=async()=>{if(await ask('¿Borrar todo y empezar desde cero? Se borran las preguntas usadas, el test empezado y el historial de resultados.')){used.clear();hist=[];test=null;LS.set('used',[]);LS.set('hist',[]);LS.set('test',null);home()}};
 $('chs').onchange=e=>{const v=e.target.value;e.target.checked?sel.add(v):sel.delete(v);LS.set('sel',[...sel]);home();document.querySelector('details').open=true};
 $('all').onclick=()=>{sel=new Set(CH.map(c=>c.id));LS.set('sel',[...sel]);home();document.querySelector('details').open=true};
 $('none').onclick=()=>{sel=new Set();LS.set('sel',[]);home();document.querySelector('details').open=true};
